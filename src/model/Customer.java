@@ -21,7 +21,6 @@ public class Customer {
     private String name;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getCustId() {
         return custId;
     }
