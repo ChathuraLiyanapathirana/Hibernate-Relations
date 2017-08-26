@@ -6,7 +6,7 @@
 package view;
 
 import model.Customer;
-import model.Order;
+import model.Orders;
 import org.hibernate.classic.Session;
 import util.HibernateUtil;
 
@@ -23,8 +23,14 @@ public class Test {
         Customer c = new Customer();
         c.setCustId(1);
         c.setName("Chathura");
+        
+        Orders o=new Orders();
+        o.setOrderId(1);
+        o.setCustId(1);
+        o.setCustomer(c);
 
         openSession.save(c);
+        openSession.save(o);
         openSession.getTransaction().commit();
     }
 

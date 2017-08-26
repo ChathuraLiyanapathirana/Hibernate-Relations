@@ -5,8 +5,10 @@
  */
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
@@ -14,14 +16,13 @@ import javax.persistence.OneToOne;
  * @author Chathura Buddhika
  */
 @Entity
-public class Order {
+public class Orders {
 
-    @Id
     private int orderId;
     private int custId;
-    @OneToOne
     private Customer customer;
 
+    @Id
     public int getOrderId() {
         return orderId;
     }
@@ -38,6 +39,8 @@ public class Order {
         this.custId = custId;
     }
 
+    @OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cust_id", referencedColumnName = "custid")
     public Customer getCustomer() {
         return customer;
     }
@@ -45,5 +48,4 @@ public class Order {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
 }
